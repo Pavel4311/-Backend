@@ -1,12 +1,12 @@
-const { Pool } = requier("pg");
-requier("dotemv").config();
+const { Pool } = require("pg");
+require("dotenv").config();
 
 const pool = new Pool({
-  user: process.env.Db_USER,
-  host: process.env.Db_HOST,
-  database: process.env.Db_NAME,
-  password: process.env.Db_PASSWORD,
-  port: process.env.Db_PORT,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 pool.on("connect", () => {
