@@ -53,7 +53,7 @@ const saveCalculation = async (client, mortgageProfileId, calculation) => {
     calculation.possibleTaxDeduction,
     calculation.savingsDueMotherCapital,
     calculation.recommendedIncome,
-    JSON.stringify(calculation.mortgagePaymentSchedule),
+    calculation.mortgagePaymentSchedule,
   ];
   await executor.query(query, values);
 };

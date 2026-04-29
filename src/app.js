@@ -1,11 +1,18 @@
 const express = require("express");
+const rateLimit = require("express-rate-limit");
 const mortgageProfilesRoutes = require("./routes/mortgageProfiles.routes");
-const rateLimit = require("./middleware/rateLimit");
 
 const app = express();
 
 app.use(express.json());
-app.use(rateLimit);
+const apiLimiter = rateLimit({
+  windowMs: 60_000,
+  limit: 60,
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+});
+
+app.use(apiLimiter);
 app.use(mortgageProfilesRoutes);
 
 app.use((req, res) => {
