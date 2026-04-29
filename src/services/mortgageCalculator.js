@@ -23,6 +23,7 @@ const buildSchedule = (loanAmount, monthlyPayment, monthlyRate, months) => {
     } else {
       balance = round2(balance - principalPayment);
       if (balance < 0) {
+        // Guard against rounding drift on the remaining balance.
         balance = 0;
       }
     }

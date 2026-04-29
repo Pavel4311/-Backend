@@ -1,9 +1,11 @@
 const express = require("express");
 const mortgageProfilesRoutes = require("./routes/mortgageProfiles.routes");
+const rateLimit = require("./middleware/rateLimit");
 
 const app = express();
 
 app.use(express.json());
+app.use(rateLimit);
 app.use(mortgageProfilesRoutes);
 
 app.use((req, res) => {
